@@ -1,0 +1,262 @@
+/**
+* Variables
+*/
+/* Container width */
+/* Font family and font sizes*/
+/* Colors */
+/* Breakpoints */
+/* Small tablets and large smartphones (landscape view) */
+/* Small tablets (portrait view) */
+/* Tablets and small desktops */
+/* Small devices */
+/* Medium devices */
+/**
+* General styles
+*/
+/* set a box model on the root element */
+html {
+  box-sizing: border-box; }
+
+/* All the elements from the DOM inherit box-sizing from the parent */
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+/**
+* 1. make the container full width width with a max of 1200px
+* 2. center contents in the view port
+* 3. leave some space on the edges
+*/
+.container {
+  margin-left: auto;
+  /* 2 */
+  margin-right: auto;
+  /* 2 */
+  padding: 20px;
+  /* 3 */
+  width: 100%;
+  /* 1 */
+  max-width: 1200px;
+  /* 1 */
+  display: flex;
+  flex-direction: row;
+  font-family: Helvetica, sans-serif; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .container {
+      flex-flow: row wrap; } }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+      flex-flow: row wrap; } }
+
+/**
+* Aside: title and game info
+*/
+.controls {
+  width: 40%; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .controls {
+      width: 100%;
+      text-align: center;
+      line-height: 0.5em;
+      margin-bottom: 1em; } }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .controls {
+      width: 100%;
+      text-align: center;
+      line-height: 0.5em;
+      margin-bottom: 1em; } }
+
+.title {
+  margin-top: 0;
+  color: #34495e;
+  font-size: 3em; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .title {
+      font-size: 1.5em; } }
+
+.subtitle {
+  font-size: 1.5em;
+  color: #34495e; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .subtitle {
+      font-size: 1em; } }
+
+.stars {
+  padding: 0;
+  list-style: none; }
+
+.stars > li {
+  display: inline-block; }
+
+.fa-star {
+  color: #f1c40f; }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .stars .fa {
+    font-size: 1.5em; } }
+
+.reset-btn {
+  font-size: 1em;
+  padding: 0.9em;
+  color: #c0392b;
+  background-color: white;
+  border: 1px solid #c0392b;
+  border-radius: 7px; }
+
+.reset-btn:hover {
+  background-color: #c0392b;
+  color: white; }
+
+.reset-btn:focus {
+  outline: 0; }
+
+/**
+* Cards section
+*/
+.deck {
+  width: 70%; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .deck {
+      width: 100%; } }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .deck {
+      width: 100%; } }
+
+.row {
+  display: flex;
+  justify-content: center; }
+
+.wrapper {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  -webkit-perspective: 800px;
+  /* Safari */
+  perspective: 800px;
+  margin-bottom: 20px;
+  margin-right: 20px; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .wrapper {
+      width: 75px;
+      height: 75px;
+      margin-bottom: 5px;
+      margin-right: 5px; } }
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  /* Safari */
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  text-align: center;
+  line-height: 180px; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .card {
+      line-height: 85px; } }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .card {
+      line-height: 170px; } }
+
+/**
+* 3D animation
+*/
+.card figure {
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+  border-radius: 7px; }
+
+.card .front {
+  background: #34495e; }
+
+.back {
+  background: #2980b9;
+  -webkit-transform: rotateY(180deg);
+  /* Safari */
+  transform: rotateY(180deg); }
+
+.back .fa {
+  color: #ecf0f1; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .back .fa {
+      font-size: 2em; } }
+
+.flip-card {
+  -webkit-transform: rotateY(180deg);
+  /* Safari */
+  transform: rotateY(180deg); }
+
+.green {
+  background: #27ae60; }
+
+.red {
+  background: #c0392b; }
+
+/**
+* Modal
+*/
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1; }
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 1em;
+  width: 50%;
+  max-height: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #34495e;
+  text-align: center;
+  line-height: 1.5em;
+  color: #ecf0f1;
+  border-radius: 7px; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .modal-content {
+      width: 70%;
+      max-height: 70%;
+      transform: translate(-50%, -50%); } }
+
+.modal-title {
+  font-size: 1.5em;
+  color: #ecf0f1;
+  line-height: 1.5em; }
+
+ul {
+  margin: 0;
+  padding: 0; }
+
+.game-score li {
+  list-style: none;
+  font-size: 1em;
+  line-height: 1.5em; }
+
+.play-again {
+  font-size: 1em;
+  padding: 0.9em;
+  margin: 1.24em 0;
+  background-color: #2980b9;
+  color: #ecf0f1;
+  border: 1px solid #2980b9;
+  border-radius: 7px; }
+
+.play-again:hover {
+  color: #2980b9;
+  background-color: #ecf0f1; }
+
+.play-again:focus {
+  outline: 0; }
