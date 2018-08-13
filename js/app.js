@@ -23,7 +23,7 @@ timer.innerHTML = '0 mins : 0 secs';
 let seconds = 0,
     minutes = 0,
     hours = 0;
-let time = timeCounter();
+//let time = timeCounter();
 //stars icons
 let stars = $('.fa-star');
 //deck of cards
@@ -40,13 +40,16 @@ let shuffledList = shuffle(cardList);
 
 //Function to display the cards' symbols
 displayCards();
-//Add event listener : click on card => timeCounter() - cardsMatcher()
-let click = 0;
+
+//Add event listener : click on card => timeCounter() - cardsMatcher
 $('.card').on('click', function () {
-    click++;
-    if (click == 1) {
+    clicks++;
+    if (clicks == 1) {
+      setInterval(function(){
+                        timeCounter();
+                      }, 1000);
         //Function to count playing time
-        timeCounter();
+
     }
     //Function to check if two cards are matching
     cardsMatcher(this); // where 'this' refers to the clicked card
@@ -105,10 +108,25 @@ function manageCardsList() {
     }
     return list;
 }
+
+//---------------------------------------------------------
+
+function isClicked(card){
+  //find out if a card is clicked (it has classes 'open' or 'match')
+  if($(card).hasClass('show') || $(card).hasClass('open')){
+    return true;
+  }
+  else return false;
+
+}
 //---------------------------------------------------------
 
 function cardsMatcher(card) {
     //to handle matched cards
+    //We need to block the moves counter if a card is already clicked
+    if(isClicked(card)){
+      return;
+    }
     displaySymbol(card);
     markAsOpened(card);
 }
@@ -218,8 +236,22 @@ function gameStatistics() {
     let time = $('#timer').text();
     //check if all the cards are matching
     if (matches === 8) {
-        alert(`Congratulations! You won in ${time}  and made ${moves} moves! That was a ${rating} star performance!`);
-    }
+
+  swal({
+  title: "Congratulations!",
+  text:  `You won in ${time}  and made ${moves} moves! That was a ${rating} star performance! Do you want to play again?`,
+  icon: "success",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    location.reload();
+  } else {
+    swal("See you soon! Have a nice day :) ");
+  }
+});
+}
 }
 //---------------------------------------------------------
 function ratingScore(moves) {
@@ -241,7 +273,7 @@ function ratingScore(moves) {
 
 function timeCounter() {
     // calculate playing time
-    interval = setInterval(function () {
+
         timer.innerHTML = minutes + ' mins ' + ' : ' + seconds + ' secs';
         seconds++;
         if (seconds == 60) {
@@ -252,7 +284,7 @@ function timeCounter() {
             hours++;
             minutes = 0;
         }
-    }, 1000);
+
 
 }
 
