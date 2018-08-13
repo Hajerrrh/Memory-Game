@@ -5,6 +5,8 @@ a javascript memory game
 
 * [Important!](#important)
 * [How to play?](#how-to-play)
+* [Code depencies](#code-depencies)
+
 
 ## Important
 
@@ -23,3 +25,9 @@ Open https://hajerrrh.github.io/.
 - 
 ![demo](./demo.png)
 ![demo](./demo1.png)
+
+## Code depencies
+- [JQuery](https://jquery.com/) 
+- [Sweet Alert](https://sweetalert.js.org/guides/) 
+- [Google Fonts](https://fonts.google.com/) 
+- [Font Awesome](https://fontawesome.com/)
